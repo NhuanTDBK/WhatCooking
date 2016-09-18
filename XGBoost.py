@@ -19,8 +19,8 @@ from utils import *
 
 # In[2]:
 
-n_iter = 50
-k_fold = 3
+n_iter = 30
+k_fold = 8
 # cv = kfold
 # initialize the classifier
 
@@ -48,12 +48,11 @@ param_grid = {
 
 print "Randomized XGBoost"
 # In[ ]:
-for i in range(2):
-	print "Loop %i/20"%i
-	search_GB = RandomizedSearchCV(GB,param_grid,scoring='log_loss',n_jobs=-1,
+print "Loop %i/20"%i
+search_GB = RandomizedSearchCV(GB,param_grid,scoring='log_loss',n_jobs=-1,
                n_iter=n_iter,cv=cv,verbose=True)
-	search_GB.fit(X_train,y_train)
-	log_model = search_GB.score(X_val,y_val)
-	print "Log loss = %s"%log_model
-	X_test = get_test()
-	save_submission('XGBoost',log_model,search_GB.predict_proba(X_test))
+search_GB.fit(X_train,y_train)
+log_model = search_GB.score(X_val,y_val)
+print "Log loss = %s"%log_model
+X_test = get_test()
+save_submission('XGBoost',log_model,search_GB.predict(X_test))
