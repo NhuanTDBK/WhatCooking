@@ -23,7 +23,7 @@ def load_onehot_train_and_kfold(n_folds=5):
 def load_train_and_kfold(n_folds=5):	
 	X_train, X_test, y_train, y_test = load_train()
 	cv = StratifiedKFold(y_train, n_folds=n_folds, shuffle=True)
-	return X_train,X_test,y_train, y_test, kfold 
+	return X_train.tolist(),X_test.tolist(),y_train, y_test, cv
 
 def save_submission(model_name,loss_model,y_test):
 	# def save_submission(model_name,loss_model,y_test):
@@ -42,6 +42,6 @@ def load_train(file_name="train_data.npz"):
 	dat_file = np.load(file_name)
 	return dat_file["X_train"],dat_file["X_val"],dat_file["y_train"],dat_file["y_val"]
 def get_test(normalize=True):
-	dat_file = np.load("train_data")
+	dat_file = np.load("train_data.npz")
 	vectorIngr = dat_file["X_test"]
-	return vectorIngr
+	return vectorIngr.tolist()
