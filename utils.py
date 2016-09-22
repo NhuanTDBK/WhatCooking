@@ -25,16 +25,15 @@ def load_train_and_kfold(n_folds=5):
 	cv = StratifiedKFold(y_train, n_folds=n_folds, shuffle=True)
 	return X_train.tolist(),X_test.tolist(),y_train, y_test, cv
 
-def save_submission(model_name,loss_model,y_test):
+def save_submission(model_name,log_loss,y_test):
 	# def save_submission(model_name,loss_model,y_test):
 	test = pd.read_json('data/test.json')
 	new_test = test.drop(['id'],axis=1)
-	y_test_sub = get_test()
+	#y_test_sub = get_test()
 	submisstion = pd.read_csv('data/sample_submission.csv')
 	nn_sub = pd.DataFrame(columns=submisstion.columns, index=test.index)
 	nn_sub.id = test.id
-	nn_sub[nn_sub.columns[1:]] = y_test_sub
-	log_loss = scores
+	nn_sub[nn_sub.columns[1:]] = y_test
 	nn_sub.to_csv("results/%s_%s.csv"%(model_name,log_loss),index=None)
 	print "Save submission completed"
 #>>>>>>> eb57fc4f01fd81cd0a07ff0a92a8d45b3c83ae4f
