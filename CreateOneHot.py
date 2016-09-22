@@ -126,7 +126,7 @@ def to_k_hot(recipes):
 
 
 # In[34]:
-
+train_len = train_dat.shape[0]
 recipe_to_array = np.array(ingredient_lemmatized.map(to_k_hot).tolist(),dtype='int32')
 
 
