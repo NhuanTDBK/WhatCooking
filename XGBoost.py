@@ -19,7 +19,7 @@ from utils import *
 
 # In[2]:
 
-n_iter = 1
+n_iter = 30
 k_fold = 3
 # cv = kfold
 # initialize the classifier

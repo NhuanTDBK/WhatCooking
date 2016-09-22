@@ -18,8 +18,8 @@ from utils import *
 
 # In[2]:
 
-n_iter = 200
-k_fold = 10
+n_iter = 30
+k_fold = 3
 # cv = kfold
 # initialize the classifier
 X_train, X_val, y_train, y_val, cv = load_train_and_kfold(n_folds=k_fold)
@@ -31,12 +31,12 @@ model = ExtraTreesClassifier(random_state=4111)
 model_name = model.__class__.__name__
 param_grid = {
       "max_depth": sp_randint(4, 100),
-      "max_features": sp_randint(1, 11),
+#      "max_features": sp_randint(1, 11),
       "min_samples_split": sp_randint(1, 11),
       "min_samples_leaf": sp_randint(1, 11),
       "bootstrap": [True, False],
       "criterion": ["gini", "entropy"],
-#       "n_estimators": sp_randint(100,600)
+       "n_estimators": sp_randint(100,600)
 }
 
 
@@ -52,6 +52,6 @@ search_GB.fit(X_train,y_train.flatten())
 log_model = search_GB.score(X_val,y_val.flatten())
 print "Log loss = %s"%log_model
 X_test = get_test()
-y_pred = search_GB.predict_proba(X_test)
+y_pred = search_GB.predict(X_test)
 save_submission(model_name,log_model,y_pred)
 

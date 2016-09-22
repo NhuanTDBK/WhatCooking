@@ -18,8 +18,8 @@ from utils import *
 
 # In[3]:
 
-n_iter = 100
-k_fold = 10
+n_iter = 30
+k_fold = 3
 # cv = kfold
 # initialize the classifier
 X_train, X_val, y_train, y_val, cv = load_train_and_kfold(n_folds=k_fold)
@@ -32,7 +32,7 @@ model_name = model.__class__.__name__
 param_grid = {
      'learning_rate': sp_uniform(loc=0e0,scale=1e0),
       "max_depth": sp_randint(4, 100),
-      "max_features": sp_randint(1, 11),
+#      "max_features": sp_randint(1, 11),
       "min_samples_split": sp_randint(1, 11),
       "min_samples_leaf": sp_randint(1, 11),
       'subsample': np.arange(0.6,1.0,step=0.05),
@@ -42,7 +42,7 @@ param_grid = {
 
 # In[ ]:
 
-search_GB = RandomizedSearchCV(model,param_grid,scoring='log_loss',n_jobs=-1,
+search_GB = RandomizedSearchCV(model,param_grid,scoring=scoring,n_jobs=-1,
                n_iter=n_iter,cv=cv,verbose=True)
 search_GB.fit(X_train,y_train.flatten())
 
