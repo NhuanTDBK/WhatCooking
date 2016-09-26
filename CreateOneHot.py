@@ -53,24 +53,15 @@ def normalize_ingres(ingres):
     result = [lemma_normalizer.transform(ingre) for ingre in ingres]
     return ','.join(list(itertools.chain(*result)))
 
-
-# In[4]:
-
-total_dat['ingre_str'] = total_dat.ingredients.map(normalize_ingres) 
-
-
-# In[5]:
-
-lemma = lambda x: x.strip().lower().split(',')
-ingredient_lemmatized = total_dat.ingre_str.map(lemma)
-
+#total_dat['ingre_str'] = total_dat.ingredients.map(normalize_ingres) 
+lemma = lambda x: x.strip().split(',')
+ingredient_lemmatized = total_dat.ingredients.map(normalize_ingres).map(lemma)
 
 # In[6]:
 print "Build vocabulary"
 vocab = []
 result = [vocab.extend(recipe) for recipe in ingredient_lemmatized]
 vocab = set(vocab)
-
 
 # In[7]:
 
@@ -87,10 +78,6 @@ print vocab_size
 # In[14]:
 
 recipe_to_array = []
-
-
-# In[15]:
-
 #convert word to integer
 to_idx = lambda x: [word2idx[word] for word in x]
 
@@ -113,9 +100,6 @@ for k,v in word2idx.iteritems():
     recipe_to_array[v] = 1
     word2hot[k] = recipe_to_array
 
-
-# In[19]:
-
 # convert to k-hot vector
 def to_k_hot(recipes):
     result = np.zeros((vocab_size))
@@ -128,7 +112,6 @@ def to_k_hot(recipes):
 # In[34]:
 train_len = train_dat.shape[0]
 recipe_to_array = np.array(ingredient_lemmatized.map(to_k_hot).tolist(),dtype='int32')
-
 
 # In[49]:
 

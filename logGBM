@@ -1,1 +1,411 @@
 ]0;IPython: NhuanWorking/WhatCookingFitting 3 folds for each of 30 candidates, totalling 90 fits
+[0;31m[0m
+[0;31mJoblibTypeError[0mTraceback (most recent call last)
+[0;32m/home/ubuntu/NhuanWorking/WhatCooking/GradientBoost.py[0m in [0;36m<module>[0;34m()[0m
+[1;32m     45[0m search_GB = RandomizedSearchCV(model,param_grid,scoring=scoring,n_jobs=-1,
+[1;32m     46[0m                n_iter=n_iter,cv=cv,verbose=True)
+[0;32m---> 47[0;31m [0msearch_GB[0m[0;34m.[0m[0mfit[0m[0;34m([0m[0mX_train[0m[0;34m,[0m[0my_train[0m[0;34m.[0m[0mflatten[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0m
+[0m[1;32m     48[0m [0;34m[0m[0m
+[1;32m     49[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python2.7/dist-packages/sklearn/grid_search.pyc[0m in [0;36mfit[0;34m(self, X, y)[0m
+[1;32m    994[0m                                           [0mself[0m[0;34m.[0m[0mn_iter[0m[0;34m,[0m[0;34m[0m[0m
+[1;32m    995[0m                                           random_state=self.random_state)
+[0;32m--> 996[0;31m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_fit[0m[0;34m([0m[0mX[0m[0;34m,[0m [0my[0m[0;34m,[0m [0msampled_params[0m[0;34m)[0m[0;34m[0m[0m
+[0m
+[0;32m/usr/local/lib/python2.7/dist-packages/sklearn/grid_search.pyc[0m in [0;36m_fit[0;34m(self, X, y, parameter_iterable)[0m
+[1;32m    551[0m                                     [0mself[0m[0;34m.[0m[0mfit_params[0m[0;34m,[0m [0mreturn_parameters[0m[0;34m=[0m[0mTrue[0m[0;34m,[0m[0;34m[0m[0m
+[1;32m    552[0m                                     error_score=self.error_score)
+[0;32m--> 553[0;31m                 [0;32mfor[0m [0mparameters[0m [0;32min[0m [0mparameter_iterable[0m[0;34m[0m[0m
+[0m[1;32m    554[0m                 for train, test in cv)
+[1;32m    555[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.pyc[0m in [0;36m__call__[0;34m(self, iterable)[0m
+[1;32m    808[0m                 [0;31m# consumption.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    809[0m                 [0mself[0m[0;34m.[0m[0m_iterating[0m [0;34m=[0m [0mFalse[0m[0;34m[0m[0m
+[0;32m--> 810[0;31m             [0mself[0m[0;34m.[0m[0mretrieve[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0m[1;32m    811[0m             [0;31m# Make sure that we get a last message telling us we are done[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    812[0m             [0melapsed_time[0m [0;34m=[0m [0mtime[0m[0;34m.[0m[0mtime[0m[0;34m([0m[0;34m)[0m [0;34m-[0m [0mself[0m[0;34m.[0m[0m_start_time[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.pyc[0m in [0;36mretrieve[0;34m(self)[0m
+[1;32m    755[0m                     [0;31m# a working pool as they expect.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    756[0m                     [0mself[0m[0;34m.[0m[0m_initialize_pool[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0m
+[0;32m--> 757[0;31m                 [0;32mraise[0m [0mexception[0m[0;34m[0m[0m
+[0m[1;32m    758[0m [0;34m[0m[0m
+[1;32m    759[0m     [0;32mdef[0m [0m__call__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0miterable[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0m
+
+[0;31mJoblibTypeError[0m: JoblibTypeError
+___________________________________________________________________________
+Multiprocessing exception:
+...........................................................................
+/usr/local/bin/ipython in <module>()
+      6 
+      7 from IPython import start_ipython
+      8 
+      9 if __name__ == '__main__':
+     10     sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+---> 11     sys.exit(start_ipython())
+     12 
+     13 
+     14 
+     15 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/__init__.py in start_ipython(argv=None, **kwargs={})
+    114     kwargs : various, optional
+    115         Any other kwargs will be passed to the Application constructor,
+    116         such as `config`.
+    117     """
+    118     from IPython.terminal.ipapp import launch_new_instance
+--> 119     return launch_new_instance(argv=argv, **kwargs)
+        launch_new_instance = <bound method MetaHasTraits.launch_instance of <class 'IPython.terminal.ipapp.TerminalIPythonApp'>>
+        argv = None
+        kwargs = {}
+    120 
+    121 def start_kernel(argv=None, **kwargs):
+    122     """Launch a normal IPython kernel instance (as opposed to embedded)
+    123     
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/traitlets/config/application.py in launch_instance(cls=<class 'IPython.terminal.ipapp.TerminalIPythonApp'>, argv=None, **kwargs={})
+    647         """Launch a global instance of this Application
+    648 
+    649         If a global instance already exists, this reinitializes and starts it
+    650         """
+    651         app = cls.instance(**kwargs)
+--> 652         app.initialize(argv)
+        app.initialize = <bound method TerminalIPythonApp.initialize of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+        argv = None
+    653         app.start()
+    654 
+    655 #-----------------------------------------------------------------------------
+    656 # utility functions, for convenience
+
+...........................................................................
+/home/ubuntu/NhuanWorking/WhatCooking/<string> in initialize(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, argv=None)
+      1 
+----> 2 
+      3 
+      4 
+      5 #!/usr/bin/env python
+      6 # encoding: utf-8
+      7 """
+      8 The :class:`~IPython.core.application.Application` object for the command
+      9 line :command:`ipython` program.
+     10 """
+     11 
+     12 # Copyright (c) IPython Development Team.
+     13 # Distributed under the terms of the Modified BSD License.
+     14 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/traitlets/config/application.py in catch_config_error(method=<function initialize>, app=<IPython.terminal.ipapp.TerminalIPythonApp object>, *args=(None,), **kwargs={})
+     82     message, and exit the app.
+     83 
+     84     For use on init methods, to prevent invoking excepthook on invalid input.
+     85     """
+     86     try:
+---> 87         return method(app, *args, **kwargs)
+        method = <function initialize>
+        app = <IPython.terminal.ipapp.TerminalIPythonApp object>
+        args = (None,)
+        kwargs = {}
+     88     except (TraitError, ArgumentError) as e:
+     89         app.print_help()
+     90         app.log.fatal("Bad config encountered during initialization:")
+     91         app.log.fatal(str(e))
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/terminal/ipapp.py in initialize(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, argv=None)
+    310         # and draw the banner
+    311         self.init_banner()
+    312         # Now a variety of things that happen after the banner is printed.
+    313         self.init_gui_pylab()
+    314         self.init_extensions()
+--> 315         self.init_code()
+        self.init_code = <bound method TerminalIPythonApp.init_code of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+    316 
+    317     def init_shell(self):
+    318         """initialize the InteractiveShell instance"""
+    319         # Create an InteractiveShell instance.
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/core/shellapp.py in init_code(self=<IPython.terminal.ipapp.TerminalIPythonApp object>)
+    268         if self.hide_initial_ns:
+    269             self.shell.user_ns_hidden.update(self.shell.user_ns)
+    270 
+    271         # command-line execution (ipython -i script.py, ipython -m module)
+    272         # should *not* be excluded from %whos
+--> 273         self._run_cmd_line_code()
+        self._run_cmd_line_code = <bound method TerminalIPythonApp._run_cmd_line_c...Python.terminal.ipapp.TerminalIPythonApp object>>
+    274         self._run_module()
+    275 
+    276         # flush output, so itwon't be attached to the first cell
+    277         sys.stdout.flush()
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/core/shellapp.py in _run_cmd_line_code(self=<IPython.terminal.ipapp.TerminalIPythonApp object>)
+    389         elif self.file_to_run:
+    390             fname = self.file_to_run
+    391             if os.path.isdir(fname):
+    392                 fname = os.path.join(fname, "__main__.py")
+    393             try:
+--> 394                 self._exec_file(fname, shell_futures=True)
+        self._exec_file = <bound method TerminalIPythonApp._exec_file of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+        fname = u'GradientBoost.py'
+    395             except:
+    396                 self.shell.showtraceback(tb_offset=4)
+    397                 if not self.interact:
+    398                     self.exit(1)
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/core/shellapp.py in _exec_file(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, fname=u'GradientBoost.py', shell_futures=True)
+    323                     else:
+    324                         # default to python, even without extension
+    325                         self.shell.safe_execfile(full_filename,
+    326                                                  self.shell.user_ns,
+    327                                                  shell_futures=shell_futures,
+--> 328                                                  raise_exceptions=True)
+    329         finally:
+    330             sys.argv = save_argv
+    331 
+    332     def _run_startup_files(self):
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/core/interactiveshell.py in safe_execfile(self=<IPython.terminal.interactiveshell.TerminalInteractiveShell object>, fname=u'/home/ubuntu/NhuanWorking/WhatCooking/GradientBoost.py', *where=({'GradientBoostingClassifier': <class 'sklearn.ensemble.gradient_boosting.GradientBoostingClassifier'>, 'ISRIStemmer': <class 'nltk.stem.isri.ISRIStemmer'>, 'In': [''], 'LabelEncoder': <class 'sklearn.preprocessing.label.LabelEncoder'>, 'LancasterStemmer': <class 'nltk.stem.lancaster.LancasterStemmer'>, 'OneHotEncoder': <class 'sklearn.preprocessing.data.OneHotEncoder'>, 'Out': {}, 'PorterStemmer': <class 'nltk.stem.porter.PorterStemmer'>, 'RSLPStemmer': <class 'nltk.stem.rslp.RSLPStemmer'>, 'RandomizedSearchCV': <class 'sklearn.grid_search.RandomizedSearchCV'>, ...},), **kw={'exit_ignore': False, 'raise_exceptions': True, 'shell_futures': True})
+   2476         with prepended_to_syspath(dname), self.builtin_trap:
+   2477             try:
+   2478                 glob, loc = (where + (None, ))[:2]
+   2479                 py3compat.execfile(
+   2480                     fname, glob, loc,
+-> 2481                     self.compile if kw['shell_futures'] else None)
+        self.compile = <IPython.core.compilerop.CachingCompiler instance>
+        kw = {'exit_ignore': False, 'raise_exceptions': True, 'shell_futures': True}
+   2482             except SystemExit as status:
+   2483                 # If the call was made with 0 or None exit status (sys.exit(0)
+   2484                 # or sys.exit() ), don't bother showing a traceback, as both of
+   2485                 # these are considered normal by the OS:
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/IPython/utils/py3compat.py in execfile(fname=u'/home/ubuntu/NhuanWorking/WhatCooking/GradientBoost.py', glob={'GradientBoostingClassifier': <class 'sklearn.ensemble.gradient_boosting.GradientBoostingClassifier'>, 'ISRIStemmer': <class 'nltk.stem.isri.ISRIStemmer'>, 'In': [''], 'LabelEncoder': <class 'sklearn.preprocessing.label.LabelEncoder'>, 'LancasterStemmer': <class 'nltk.stem.lancaster.LancasterStemmer'>, 'OneHotEncoder': <class 'sklearn.preprocessing.data.OneHotEncoder'>, 'Out': {}, 'PorterStemmer': <class 'nltk.stem.porter.PorterStemmer'>, 'RSLPStemmer': <class 'nltk.stem.rslp.RSLPStemmer'>, 'RandomizedSearchCV': <class 'sklearn.grid_search.RandomizedSearchCV'>, ...}, loc=None, compiler=<IPython.core.compilerop.CachingCompiler instance>)
+    287             where = [ns for ns in [glob, loc] if ns is not None]
+    288             if compiler is None:
+    289                 builtin_mod.execfile(filename, *where)
+    290             else:
+    291                 scripttext = builtin_mod.open(fname).read().rstrip() + '\n'
+--> 292                 exec(compiler(scripttext, filename, 'exec'), glob, loc)
+        compiler = <IPython.core.compilerop.CachingCompiler instance>
+        scripttext = '\n# coding: utf-8\n\n# In[2]:\n\nimport numpy as np\ni...st)\nsave_submission(model_name,log_model,y_pred)\n'
+        filename = '/home/ubuntu/NhuanWorking/WhatCooking/GradientBoost.py'
+        glob = {'GradientBoostingClassifier': <class 'sklearn.ensemble.gradient_boosting.GradientBoostingClassifier'>, 'ISRIStemmer': <class 'nltk.stem.isri.ISRIStemmer'>, 'In': [''], 'LabelEncoder': <class 'sklearn.preprocessing.label.LabelEncoder'>, 'LancasterStemmer': <class 'nltk.stem.lancaster.LancasterStemmer'>, 'OneHotEncoder': <class 'sklearn.preprocessing.data.OneHotEncoder'>, 'Out': {}, 'PorterStemmer': <class 'nltk.stem.porter.PorterStemmer'>, 'RSLPStemmer': <class 'nltk.stem.rslp.RSLPStemmer'>, 'RandomizedSearchCV': <class 'sklearn.grid_search.RandomizedSearchCV'>, ...}
+        loc = None
+    293 
+    294 
+    295 PY2 = not PY3
+    296 PYPY = platform.python_implementation() == "PyPy"
+
+...........................................................................
+/home/ubuntu/NhuanWorking/WhatCooking/GradientBoost.py in <module>()
+     42 
+     43 # In[ ]:
+     44 
+     45 search_GB = RandomizedSearchCV(model,param_grid,scoring=scoring,n_jobs=-1,
+     46                n_iter=n_iter,cv=cv,verbose=True)
+---> 47 search_GB.fit(X_train,y_train.flatten())
+     48 
+     49 
+     50 # In[ ]:
+     51 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/grid_search.py in fit(self=RandomizedSearchCV(cv=sklearn.cross_validation.S...True,
+          scoring='accuracy', verbose=True), X=<31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object))
+    991 
+    992         """
+    993         sampled_params = ParameterSampler(self.param_distributions,
+    994                                           self.n_iter,
+    995                                           random_state=self.random_state)
+--> 996         return self._fit(X, y, sampled_params)
+        self._fit = <bound method RandomizedSearchCV._fit of Randomi...rue,
+          scoring='accuracy', verbose=True)>
+        X = <31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+        y = array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object)
+        sampled_params = <sklearn.grid_search.ParameterSampler object>
+    997 
+    998 
+    999 
+   1000 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/grid_search.py in _fit(self=RandomizedSearchCV(cv=sklearn.cross_validation.S...True,
+          scoring='accuracy', verbose=True), X=<31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object), parameter_iterable=<sklearn.grid_search.ParameterSampler object>)
+    548         )(
+    549             delayed(_fit_and_score)(clone(base_estimator), X, y, self.scorer_,
+    550                                     train, test, self.verbose, parameters,
+    551                                     self.fit_params, return_parameters=True,
+    552                                     error_score=self.error_score)
+--> 553                 for parameters in parameter_iterable
+        parameters = undefined
+        parameter_iterable = <sklearn.grid_search.ParameterSampler object>
+    554                 for train, test in cv)
+    555 
+    556         # Out is a list of triplet: score, estimator, n_test_samples
+    557         n_fits = len(out)
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py in __call__(self=Parallel(n_jobs=-1), iterable=<generator object <genexpr>>)
+    805             if pre_dispatch == "all" or n_jobs == 1:
+    806                 # The iterable was consumed all at once by the above for loop.
+    807                 # No need to wait for async callbacks to trigger to
+    808                 # consumption.
+    809                 self._iterating = False
+--> 810             self.retrieve()
+        self.retrieve = <bound method Parallel.retrieve of Parallel(n_jobs=-1)>
+    811             # Make sure that we get a last message telling us we are done
+    812             elapsed_time = time.time() - self._start_time
+    813             self._print('Done %3i out of %3i | elapsed: %s finished',
+    814                         (len(self._output), len(self._output),
+
+---------------------------------------------------------------------------
+Sub-process traceback:
+---------------------------------------------------------------------------
+TypeError                                          Fri Sep 23 02:07:45 2016
+PID: 1564                                     Python 2.7.6: /usr/bin/python
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/externals/joblib/parallel.py in __call__(self=<sklearn.externals.joblib.parallel.BatchedCalls object>)
+     67     def __init__(self, iterator_slice):
+     68         self.items = list(iterator_slice)
+     69         self._size = len(self.items)
+     70 
+     71     def __call__(self):
+---> 72         return [func(*args, **kwargs) for func, args, kwargs in self.items]
+        func = <function _fit_and_score>
+        args = (GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), <31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object), make_scorer(accuracy_score), array([    1,     3,     5, ..., 31814, 31816, 31818]), array([    0,     2,     4, ..., 31813, 31815, 31817]), True, {'learning_rate': 0.014021233083708395, 'max_depth': 90, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 595, 'subsample': 0.59999999999999998}, {})
+        kwargs = {'error_score': 'raise', 'return_parameters': True}
+        self.items = [(<function _fit_and_score>, (GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), <31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object), make_scorer(accuracy_score), array([    1,     3,     5, ..., 31814, 31816, 31818]), array([    0,     2,     4, ..., 31813, 31815, 31817]), True, {'learning_rate': 0.014021233083708395, 'max_depth': 90, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 595, 'subsample': 0.59999999999999998}, {}), {'error_score': 'raise', 'return_parameters': True})]
+     73 
+     74     def __len__(self):
+     75         return self._size
+     76 
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/cross_validation.py in _fit_and_score(estimator=GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), X=<31819x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([u'russian', u'brazilian', u'japanese', .....an', u'italian',
+       u'indian'], dtype=object), scorer=make_scorer(accuracy_score), train=array([    1,     3,     5, ..., 31814, 31816, 31818]), test=array([    0,     2,     4, ..., 31813, 31815, 31817]), verbose=True, parameters={'learning_rate': 0.014021233083708395, 'max_depth': 90, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 595, 'subsample': 0.59999999999999998}, fit_params={}, return_train_score=False, return_parameters=True, error_score='raise')
+   1545                              " numeric value. (Hint: if using 'raise', please"
+   1546                              " make sure that it has been spelled correctly.)"
+   1547                              )
+   1548 
+   1549     else:
+-> 1550         test_score = _score(estimator, X_test, y_test, scorer)
+        test_score = undefined
+        estimator = GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False)
+        X_test = <10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+        y_test = array([u'russian', u'japanese', u'french', ..., ...u'southern_us',
+       u'italian'], dtype=object)
+        scorer = make_scorer(accuracy_score)
+   1551         if return_train_score:
+   1552             train_score = _score(estimator, X_train, y_train, scorer)
+   1553 
+   1554     scoring_time = time.time() - start_time
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/cross_validation.py in _score(estimator=GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), X_test=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y_test=array([u'russian', u'japanese', u'french', ..., ...u'southern_us',
+       u'italian'], dtype=object), scorer=make_scorer(accuracy_score))
+   1601 def _score(estimator, X_test, y_test, scorer):
+   1602     """Compute the score of an estimator on a given test set."""
+   1603     if y_test is None:
+   1604         score = scorer(estimator, X_test)
+   1605     else:
+-> 1606         score = scorer(estimator, X_test, y_test)
+        score = undefined
+        scorer = make_scorer(accuracy_score)
+        estimator = GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False)
+        X_test = <10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+        y_test = array([u'russian', u'japanese', u'french', ..., ...u'southern_us',
+       u'italian'], dtype=object)
+   1607     if not isinstance(score, numbers.Number):
+   1608         raise ValueError("scoring must return a number, got %s (%s) instead."
+   1609                          % (str(score), type(score)))
+   1610     return score
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/metrics/scorer.py in __call__(self=make_scorer(accuracy_score), estimator=GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), X=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y_true=array([u'russian', u'japanese', u'french', ..., ...u'southern_us',
+       u'italian'], dtype=object), sample_weight=None)
+     78         Returns
+     79         -------
+     80         score : float
+     81             Score function applied to prediction of estimator on X.
+     82         """
+---> 83         y_pred = estimator.predict(X)
+        y_pred = undefined
+        estimator.predict = <bound method GradientBoostingClassifier.predict....59999999999999998, verbose=0, warm_start=False)>
+        X = <10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+     84         if sample_weight is not None:
+     85             return self._sign * self._score_func(y_true, y_pred,
+     86                                                  sample_weight=sample_weight,
+     87                                                  **self._kwargs)
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/ensemble/gradient_boosting.py in predict(self=GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), X=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>)
+   1493         Returns
+   1494         -------
+   1495         y: array of shape = ["n_samples]
+   1496             The predicted values.
+   1497         """
+-> 1498         score = self.decision_function(X)
+        score = undefined
+        self.decision_function = <bound method GradientBoostingClassifier.decisio....59999999999999998, verbose=0, warm_start=False)>
+        X = <10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+   1499         decisions = self.loss_._score_to_decision(score)
+   1500         return self.classes_.take(decisions, axis=0)
+   1501 
+   1502     def staged_predict(self, X):
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/ensemble/gradient_boosting.py in decision_function(self=GradientBoostingClassifier(init=None, learning_r...0.59999999999999998, verbose=0, warm_start=False), X=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>)
+   1451             The decision function of the input samples. The order of the
+   1452             classes corresponds to that in the attribute `classes_`.
+   1453             Regression and binary classification produce an array of shape
+   1454             [n_samples].
+   1455         """
+-> 1456         X = check_array(X, dtype=DTYPE, order="C")
+        X = <10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+   1457         score = self._decision_function(X)
+   1458         if score.shape[1] == 1:
+   1459             return score.ravel()
+   1460         return score
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/utils/validation.py in check_array(array=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, accept_sparse=None, dtype=<type 'numpy.float32'>, order='C', copy=False, force_all_finite=True, ensure_2d=True, allow_nd=False, ensure_min_samples=1, ensure_min_features=1, warn_on_dtype=False, estimator=None)
+    366         estimator_name = "Estimator"
+    367     context = " by %s" % estimator_name if estimator is not None else ""
+    368 
+    369     if sp.issparse(array):
+    370         array = _ensure_sparse_format(array, accept_sparse, dtype, copy,
+--> 371                                       force_all_finite)
+        force_all_finite = True
+    372     else:
+    373         array = np.array(array, dtype=dtype, order=order, copy=copy)
+    374 
+    375         if ensure_2d:
+
+...........................................................................
+/usr/local/lib/python2.7/dist-packages/sklearn/utils/validation.py in _ensure_sparse_format(spmatrix=<10613x2895 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, accept_sparse=None, dtype=<type 'numpy.float32'>, copy=False, force_all_finite=True)
+    233     -------
+    234     spmatrix_converted : scipy sparse matrix.
+    235         Matrix that is ensured to have an allowed type.
+    236     """
+    237     if accept_sparse in [None, False]:
+--> 238         raise TypeError('A sparse matrix was passed, but dense '
+    239                         'data is required. Use X.toarray() to '
+    240                         'convert to a dense numpy array.')
+    241     if dtype is None:
+    242         dtype = spmatrix.dtype
+
+TypeError: A sparse matrix was passed, but dense data is required. Use X.toarray() to convert to a dense numpy array.
+___________________________________________________________________________

@@ -34,7 +34,6 @@ param_grid = {
       "algorithm" : ["auto", "ball_tree", "kd_tree", "brute"],
 }
 
-
 # In[ ]:
 
 search_GB = RandomizedSearchCV(model,param_grid,scoring=scoring,n_jobs=-1,
