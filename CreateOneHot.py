@@ -127,10 +127,13 @@ def to_k_hot(recipes):
 
 # In[34]:
 train_len = train_dat.shape[0]
-recipe_to_array = np.array(ingredient_lemmatized.map(to_k_hot).tolist(),dtype='int32')
+from scipy.sparse import csr_matrix
+#recipe_to_array = csr_matrix(np.array(ingredient_lemmatized.map(to_k_hot).tolist(),dtype='int32'))
 
-
-# In[49]:
+print "Loading file"
+dat = np.load("OneHotVocab.npz")
+recipe_to_array = dat['recipe_to_array'].tolist()
+#targets = dat['targets']
 
 onehotEncoder = OneHotEncoder()
 labels = onehotEncoder.fit_transform(encoder.fit_transform(train_dat.cuisine).reshape(-1,1))
