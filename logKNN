@@ -1,0 +1,12 @@
+]0;IPython: NhuanWorking/WhatCookingFitting 3 folds for each of 30 candidates, totalling 90 fits
+/usr/local/lib/python2.7/dist-packages/sklearn/neighbors/base.py:229: UserWarning: cannot use tree with sparse input: using brute force
+  warnings.warn("cannot use tree with sparse input: "
+/usr/local/lib/python2.7/dist-packages/sklearn/neighbors/base.py:229: UserWarning: cannot use tree with sparse input: using brute force
+  warnings.warn("cannot use tree with sparse input: "
+/usr/local/lib/python2.7/dist-packages/sklearn/neighbors/base.py:229: UserWarning: cannot use tree with sparse input: using brute force
+  warnings.warn("cannot use tree with sparse input: "
+/usr/local/lib/python2.7/dist-packages/sklearn/neighbors/base.py:229: UserWarning: cannot use tree with sparse input: using brute force
+  warnings.warn("cannot use tree with sparse input: "
+[Parallel(n_jobs=-1)]: Done  34 tasks      | elapsed: 134.9min
+/usr/local/lib/python2.7/dist-packages/sklearn/neighbors/base.py:229: UserWarning: cannot use tree with sparse input: using brute force
+  warnings.warn("cannot use tree with sparse input: "
