@@ -19,7 +19,7 @@ from keras.layers import *
 import itertools
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from scipy.sparse import csr_matrix
-
+from keras.callbacks import EarlyStopping
 
 # In[2]:
 
@@ -140,25 +140,26 @@ from keras.models import Sequential
 
 
 # In[84]:
-
 model = Sequential([
 #        embedding_layer,
  #       Conv1D(128, 5, activation='relu'),
   #      MaxPooling1D(5),
    #     Flatten(),
-	Dense(1024,input_dim=X_train.shape[1],activation='relu'),
+	Dense(2048,input_dim=X_train.shape[1],activation='relu'),
+	Dropout(0.5),
+	Dense(1024,activation='relu'),
 	Dropout(0.25),
-	Dense(512,activation='relu'),
+	Dense(256,activation='relu'),
         Dense(output_size, activation='softmax')
 ])
 from keras.optimizers import SGD
 #sgd = SGD(lr=0.1,decay=1e-5,momentum=0.9,nesterov=True)
-model.compile(loss='categorical_crossentropy',optimizer="adam",metrics=['acc'])
+model.compile(loss='categorical_crossentropy',optimizer="adagrad",metrics=['acc'])
 from keras.callbacks import EarlyStopping
-earlyStopper = EarlyStopping(monitor='val_loss',patience=20)
+earlyStopper = EarlyStopping(monitor='val_loss',patience=10)
 # In[74]:
 model.summary()
 # In[78]:
 model.fit(X_train,y_train,validation_split=0.1, nb_epoch=256, batch_size=32, verbose=2, callbacks=[earlyStopper])
-model.save("RecipeEmbedding")
+model.save("RecipeEmbedding3")
 print model.evaluate(X_val,y_val,batch_size=32)
