@@ -19,7 +19,7 @@ from utils import *
 
 # In[2]:
 
-n_iter = 30
+n_iter = 10
 k_fold = 3
 # cv = kfold
 # initialize the classifier
@@ -32,18 +32,18 @@ X_train, X_val, y_train, y_val, cv = load_train_and_kfold(n_folds=k_fold)
 
 GB = xgb.XGBClassifier(silent=False)
 param_grid = {
-              'max_depth': sp_randint(4, 200),
+              'max_depth': sp_randint(10, 200),
               'learning_rate': sp_uniform(loc=0e0,scale=1e0),
-              'objective':['multi:softprob'],
-              'nthread': [8],
+              'objective':['multi:softmax'],
+              'nthread': [16],
               'missing': [np.nan],
-              'reg_alpha': [0.01,0.017782794,0.031622777,0.056234133,\
-                            0.1,0.17782794,0.31622777,0.56234133,1.,1.77827941,\
-                            3.16227766,5.62341325,10.,\
-                            17.7827941,31.6227766,56.2341325,100.],
+              'reg_alpha': [0.01,0.056234133,\
+                            0.1,0.56234133,1.,\
+                            3.16227766,10.,\
+                            17.7827941,100.],
               'colsample_bytree': sp_uniform(loc=0.2e0,scale=0.8e0),
-              'subsample': np.arange(0.6,1.0,step=0.05),
-              'n_estimators': sp_randint(100,700),
+              'subsample': sp_uniform(loc=0.6,scale=0.3),
+              'n_estimators': sp_randint(100,1000),
 }
 
 print "Randomized XGBoost"

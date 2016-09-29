@@ -23,7 +23,7 @@ def load_onehot_train_and_kfold(n_folds=5):
 def load_train_and_kfold(n_folds=5):	
 	X_train, X_test, y_train, y_test = load_train()
 	cv = StratifiedKFold(y_train, n_folds=n_folds, shuffle=True)
-	return X_train.tolist(),X_test.tolist(),y_train, y_test, cv
+	return X_train,X_test,y_train, y_test, cv
 
 def save_submission(model_name,log_loss,y_test):
 	# def save_submission(model_name,loss_model,y_test):
@@ -36,10 +36,13 @@ def save_submission(model_name,log_loss,y_test):
 	nn_sub[nn_sub.columns[1:]] = y_test
 	nn_sub.to_csv("results/%s_%s.csv"%(model_name,log_loss),index=None)
 	print "Save submission completed"
-#>>>>>>> eb57fc4f01fd81cd0a07ff0a92a8d45b3c83ae4f
-def load_train(file_name="train_data.npz"):
+def load_train(file_name="train_data.npz",todense=False):
 	dat_file = np.load(file_name)
-	return dat_file["X_train"],dat_file["X_val"],dat_file["y_train"],dat_file["y_val"]
+	if todense is False:
+		return dat_file["X_train"].tolist().asfptype(),dat_file["X_val"].tolist().asfptype(),dat_file["y_train"].tolist(),dat_file["y_val"].tolist()
+	else:
+		return dat_file["X_train"].tolist().asfptype().toarray(),dat_file["X_val"].tolist().asfptype().toarray(),dat_file["y_train"].tolist(),dat_file["y_val"].tolist()
+		
 def get_test(normalize=True):
 	dat_file = np.load("train_data.npz")
 	vectorIngr = dat_file["X_test"]
